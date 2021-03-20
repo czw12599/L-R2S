@@ -26,7 +26,6 @@ env:
   Author: ${{github.actor}}
   Run_number: ${{github.run_number}}
   Run_workflow: ${{github.workflow}}
-  MIMI: ${{secrets.MIMI}}
   TZ: Asia/Shanghai
 
 jobs:
@@ -182,7 +181,6 @@ jobs:
         source "${PATH1}"/common.sh && Diy_chajian
         make defconfig
         source "${PATH1}"/common.sh && Diy_adgu
-        sed -i 's/root::0:0:99999:7:::/${{env.MIMI}}/g' package/base-files/files/etc/shadow
         if [ "${REGULAR_UPDATE}" == "true" ]; then
           source "${PATH1}/upgrade.sh" && Diy_Part2
         fi
